@@ -22,13 +22,16 @@ jobs:
         uses: hashicorp/setup-terraform@v3.1.0  # Latest version
 
       - name: Terraform Init
+        working-directory: ./terraform  # <-- Change working directory to terraform
         run: terraform init
 
       - name: Terraform Validate
+        working-directory: ./terraform  # <-- Change working directory to terraform
         run: terraform validate
 
       - name: Terraform Plan
         id: terraform-plan
+        working-directory: ./terraform  # <-- Change working directory to terraform
         run: terraform plan -no-color -out=tfplan
 
       - name: Comment PR (if PR exists)
